@@ -36,3 +36,24 @@ def calculate_event_total(
     if discounted_cost <= SERVICE_FEE_LIMIT:
         discounted_cost += SERVICE_FEE
     return discounted_cost
+
+
+def needs_signoff(total: float) -> bool:
+    """Returns True when the event total needs a manager's sign-off (rule 5), otherwise False"""
+    return total > SIGNOFF_LIMIT
+
+
+def needs_second_chef(guests: int, total: float) -> bool:
+    """Returns true when event needs a second chef (rule 6), otherwise False"""
+    return guests > SECOND_CHEF_GUEST_LIMIT or total >= SECOND_CHEF_TOTAL_LIMIT
+
+
+def total_booked(events: list) -> float:
+    """Returns the sum of the event totals for every event in the list."""
+    total = 0.0
+    for event in events:
+        event_total = calculate_event_total(
+            event["guest_price"], event["guests"], event["nonprofit"]
+        )
+        total += event_total
+    return total
