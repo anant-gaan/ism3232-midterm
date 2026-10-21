@@ -22,8 +22,12 @@ def test_discount_25_guests():
     assert get_event_discount(25) == 0.05
 
 
-def test_discount_fee_at_500():
+def test_service_fee_at_500():
     assert round(calculate_event_total(25.00, 20), 2) == 575.00
+
+
+def test_service_fee_uses_discounted_cost():
+    assert round(calculate_event_total(21.00, 25), 2) == 573.75
 
 
 def test_discount_99_guests_nonprofit():
@@ -42,7 +46,7 @@ def test_event_total_with_service_fee():
     assert round(calculate_event_total(18.00, 20), 2) == 435.00
 
 
-def test_even_total_without_service_fee():
+def test_event_total_without_service_fee():
     assert round(calculate_event_total(500.01, 1), 2) == 500.01
 
 
@@ -79,7 +83,7 @@ def test_total_booked_two_events():
 
 
 def test_total_booked_empty_list():
-    assert total_booked([]) == 0.0
+    assert round(total_booked([]), 2) == 0.0
 
 
 def test_largest_event_two_events():
