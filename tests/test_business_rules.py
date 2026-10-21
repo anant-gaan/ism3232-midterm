@@ -1,7 +1,9 @@
 from business_rules import (
     calculate_event_total,
     calculate_food_cost,
+    format_event_line,
     get_event_discount,
+    largest_event,
     needs_second_chef,
     needs_signoff,
     total_booked,
@@ -78,3 +80,48 @@ def test_total_booked_two_events():
 
 def test_total_booked_empty_list():
     assert total_booked([]) == 0.0
+
+
+def test_largest_event_two_events():
+    events = [
+        {
+            "client": "Arc Studios",
+            "guest_price": 20.00,
+            "guests": 20,
+            "nonprofit": False,
+        },
+        {"client": "Loro Group", "guest_price": 20.00, "guests": 40, "nonprofit": True},
+    ]
+    assert largest_event(events) == "Loro Group"
+
+
+def test_largest_event_tied_events():
+    events = [
+        {"client": "Ford Club", "guest_price": 30.00, "guests": 20, "nonprofit": False},
+        {"client": "Honda Inc", "guest_price": 60.00, "guests": 10, "nonprofit": True},
+    ]
+    assert largest_event(events) == "Ford Club"
+
+
+def test_largest_event_empty_list():
+    assert largest_event([]) == ""
+
+
+def test_format_event_line_no_no():
+    result = format_event_line("Yummy Goods", 435.00, False, False)
+    assert result == "Yummy Goods: $435.00 | sign-off: no | second chef: no"
+
+
+def test_format_event_line_yes_yes():
+    result = format_event_line("Tasty Treats", 3420.50, True, True)
+    assert result == "Tasty Treats: $3420.50 | sign-off: yes | second chef: yes"
+
+
+def test_format_event_line_yes_no():
+    result = format_event_line("Delicious Dishes", 1500.75, True, False)
+    assert result == "Delicious Dishes: $1500.75 | sign-off: yes | second chef: no"
+
+
+def test_format_event_line_no_yes():
+    result = format_event_line("Savory Snacks", 800.25, False, True)
+    assert result == "Savory Snacks: $800.25 | sign-off: no | second chef: yes"

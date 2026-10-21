@@ -57,3 +57,32 @@ def total_booked(events: list) -> float:
         )
         total += event_total
     return total
+
+
+def largest_event(events: list) -> str:
+    """Returns the client of the event with the largest event total. If two are tied for largest, it returns the first one in the list. An empty list returns an empty string."""
+    largest_client = ""
+    largest_total = 0.0
+    for event in events:
+        event_total = calculate_event_total(
+            event["guest_price"], event["guests"], event["nonprofit"]
+        )
+        if largest_client == "" or event_total > largest_total:
+            largest_total = event_total
+            largest_client = event["client"]
+    return largest_client
+
+
+def format_event_line(
+    client: str, total: float, signoff: bool, second_chef: bool
+) -> str:
+    """Returns one line of the report. Each True/False value is shown as yes or no, and the amount always has two decimal places."""
+    signoff_text = "no"
+    if signoff:
+        signoff_text = "yes"
+    chef_text = "no"
+    if second_chef:
+        chef_text = "yes"
+    return (
+        f"{client}: ${total:.2f} | sign-off: {signoff_text} | second chef: {chef_text}"
+    )
