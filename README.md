@@ -2,7 +2,7 @@
 
 **Name:** Anant Gaan 
 - **Version:** Version Beta 
-- **Date:** [Date you finished]
+- **Date:** 10/23/2026
 
 ## What This Program Does
 The program I've written creates an event report for Harvest Table Catering. It calculates the total cost of each event based on the number of guests and price per guest. My program also applies discounts and serivce when relevant according to the business rules and checks whether an event needs a sign-off or a second chef. The report conveys information such as total booked, average event total, and largest event total.
@@ -33,14 +33,14 @@ pytest -v
 I wrote 25 tests.
 
 ## Files in This Repository
-business_rules.py -> contains 8 functions representing the 6 business rules
-main.py -> contains the entire client list and also prints out the event report 
-commands.md -> contains the terminal record
-README.md -> contains the 7 section README
-requirements.txt -> contains the packages needed to run the project
-.gitignore -> contains .venv/ and __pycache__/
-tests/__init__.py -> is an empty file 
-tests/test_business_rules.py -> contains the 25 pytests for the business rules
+1. business_rules.py -> contains 8 functions representing the 6 business rules
+2. main.py -> contains the entire client list and also prints out the event report 
+3. commands.md -> contains the terminal record
+4. README.md -> contains the 7 section README
+5. requirements.txt -> contains the packages needed to run the project
+6. .gitignore -> contains .venv/ and __pycache__/
+7. tests/__init__.py -> is an empty file 
+8. tests/test_business_rules.py -> contains the 25 pytests for the business rules
 
 ## AI Use Statement
 I did not use AI
