@@ -6,8 +6,8 @@ cd ~/ism3232
 mkdir ism3232-midterm
 cd ism3232-midterm 
 
-python3 -m venv .venv
-source .venv/bin/activate 
+py -m venv .venv
+va  
 pip install pytest ruff
 pip freeze > requirements.txt
 
@@ -20,8 +20,8 @@ echo '__pycache__/' >> .gitignore
 
 git init
 git branch -M main 
-git add .
-git commit -m "midterm: part 1 - project setup"
+ga
+gcmsg "midterm: part 1 - project setup"
 git remote add origin https://github.com/anant-gaan/ism3232-midterm.git 
 git push -u origin main 
 ```
@@ -35,11 +35,11 @@ which python3
 /home/anant/ism3232/ism3232-midterm/.venv/bin/python3
 ```
 
-The output shows that my virtual environment is active because Python is running it from the project's .venv folder
+The output shows that my virtual environment is active because Python is running it from the project's .venv folder.
 
 ## 3. The project structure
 ```
-tree -L 2
+tree2
 ```
 
 ```
