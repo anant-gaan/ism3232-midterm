@@ -29,7 +29,7 @@ def get_event_discount(guests: int, nonprofit: bool = False) -> float:
 def calculate_event_total(
     guest_price: float, guests: int, nonprofit: bool = False
 ) -> float:
-    """Returns the event total for for one event: the discounted cost plus the service fee when it applies (rule 4)."""
+    """Returns the event total for one event: the discounted cost plus the service fee when it applies (rule 4)."""
     food_cost = calculate_food_cost(guest_price, guests)
     discount = get_event_discount(guests, nonprofit)
     discounted_cost = food_cost * (1 - discount)
@@ -39,12 +39,12 @@ def calculate_event_total(
 
 
 def needs_signoff(total: float) -> bool:
-    """Returns True when the event total needs a manager's sign-off (rule 5), otherwise False"""
+    """Returns True when the event total needs a manager's sign-off (rule 5), otherwise False."""
     return total > SIGNOFF_LIMIT
 
 
 def needs_second_chef(guests: int, total: float) -> bool:
-    """Returns true when event needs a second chef (rule 6), otherwise False"""
+    """Returns True when event needs a second chef (rule 6), otherwise False."""
     return guests > SECOND_CHEF_GUEST_LIMIT or total >= SECOND_CHEF_TOTAL_LIMIT
 
 
